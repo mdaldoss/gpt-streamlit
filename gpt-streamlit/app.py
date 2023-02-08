@@ -1,7 +1,7 @@
 import streamlit as st
 import openai
 import os
-from text_summarizer.functions import summarize
+from functions import summarize
 
 try:
   openai.api_key = os.getenv('OPENAI_KEY')
@@ -17,6 +17,7 @@ try:
       on_click=summarize,
       kwargs={"prompt": input_text},
   )
+  
   output_text = st.text_area(label="Summarized text:", value=st.session_state["summary"], height=250)
 except:
   st.write('There was an error =(')
